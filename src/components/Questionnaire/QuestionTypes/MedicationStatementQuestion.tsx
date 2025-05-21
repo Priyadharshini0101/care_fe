@@ -442,7 +442,7 @@ export function MedicationStatementQuestion({
       />
 
       {medications.length > 0 && (
-        <div className="md:overflow-x-auto w-auto">
+        <div className="md:overflow-x-auto max-w-4xl">
           <div className="min-w-fit">
             <div
               className={cn(
