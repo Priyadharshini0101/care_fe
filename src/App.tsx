@@ -5,7 +5,6 @@ import {
   QueryClientProvider,
 } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { useLocationChange } from "raviger";
 import { Suspense, useEffect } from "react";
 
 import { Toaster } from "@/components/ui/sonner";
@@ -51,10 +50,6 @@ const App = () => {
   useEffect(() => {
     displayCareConsoleArt();
   }, []);
-
-  useLocationChange(() => {
-    window.scrollTo(0, 0);
-  });
 
   return (
     <>
