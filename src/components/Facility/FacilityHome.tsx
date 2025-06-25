@@ -179,6 +179,8 @@ export const FacilityHome = ({ facilityId }: Props) => {
     }
   };
 
+  const isValidCoordinate = (val: number) => val && Number(val) !== 0;
+
   if (isLoading) {
     return <Loading />;
   }
@@ -208,6 +210,7 @@ export const FacilityHome = ({ facilityId }: Props) => {
         handleDelete={handleCoverImageDelete}
         onOpenChange={(open) => setEditCoverImage(open)}
         hint={coverImageHint}
+        aspectRatio={16 / 9}
       />
       <div className="container mx-auto pt-2">
         <div className="mx-auto max-w-3xl space-y-6">
@@ -339,12 +342,13 @@ export const FacilityHome = ({ facilityId }: Props) => {
                           {t("location_details")}
                         </span>
                         <span className="text-sm">
-                          {facilityData.latitude && facilityData.longitude && (
-                            <FacilityMapsLink
-                              latitude={facilityData.latitude.toString()}
-                              longitude={facilityData.longitude.toString()}
-                            />
-                          )}
+                          {isValidCoordinate(facilityData.latitude) &&
+                            isValidCoordinate(facilityData.longitude) && (
+                              <FacilityMapsLink
+                                latitude={facilityData.latitude.toString()}
+                                longitude={facilityData.longitude.toString()}
+                              />
+                            )}
                         </span>
                       </div>
                     </div>
@@ -423,7 +427,7 @@ export const FacilityHome = ({ facilityId }: Props) => {
                       <AlertDialog>
                         <AlertDialogTrigger asChild>
                           <Button
-                            className="cursor-pointer font-semibold"
+                            className="cursor-pointer font-semibold w-fit"
                             variant="destructive"
                             size="sm"
                           >
